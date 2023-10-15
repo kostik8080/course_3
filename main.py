@@ -4,9 +4,10 @@ from datetime import date
 if __name__ == '__main__':
     display_last = display_last_operations()
     checking_dictonary = checking_the_dictionary(display_last)
+    revers = reversed(checking_dictonary)
 
     # Перебор данных и установка даты в правильном порядке
-    for display in checking_dictonary:
+    for display in revers:
         dates = display["date"][:10]
         date_format = date.fromisoformat(dates)
         print(f"{date_format.day}.{date_format.month}.{date_format.year} {display['description']}")
