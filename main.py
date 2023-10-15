@@ -1,5 +1,5 @@
 from utils import display_last_operations, checking_the_dictionary
-from datetime import date
+from datetime import datetime
 
 if __name__ == '__main__':
     display_last = display_last_operations()
@@ -8,9 +8,9 @@ if __name__ == '__main__':
 
     # Перебор данных и установка даты в правильном порядке
     for display in revers:
-        dates = display["date"][:10]
-        date_format = date.fromisoformat(dates)
-        print(f"{date_format.day}.{date_format.month}.{date_format.year} {display['description']}")
+        datetime_str = display['date'].split('T')[0]
+        datetime_object = datetime.strptime(datetime_str, '%Y-%m-%d').date().strftime('%d.%m.%Y')
+        print(f"{datetime_object} {display['description']}")
 
         # Вывод счетов со скрытыми в виде * значениями
         where_from = display['to'].split(" ")

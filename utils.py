@@ -29,7 +29,7 @@ def checking_the_dictionary(value):
         if count == 5:
             break
         if "EXECUTED" in i.values() \
-                and "from" in i.keys():
+                and "from" in i.keys() or "to" in i.keys():
             executed.append(i)
             count += 1
     return executed
