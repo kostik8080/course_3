@@ -18,10 +18,14 @@ display_last = display_last_operations()
 
 def checking_the_dictionary(value):
     executed = []
-    for i in value[-7:]:
+    count = 0
+    for i in value[::-1]:
+        if count == 5:
+            break
         if "EXECUTED" in i.values() \
                 and "from" in i.keys():
             executed.append(i)
+            count += 1
     return executed
 
 
