@@ -1,11 +1,12 @@
 
 
-from utils import display_last_operations
+from utils import display_last_operations, checking_the_dictionary
 from datetime import date
 
 if __name__ == '__main__':
     display_last = display_last_operations()
-    for display in display_last:
+    checking_dictonary = checking_the_dictionary(display_last)
+    for display in checking_dictonary:
         dates = display["date"][:10]
         date_format = date.fromisoformat(dates)
         print(f"{date_format.day}.{date_format.month}.{date_format.year} {display['description']}")
