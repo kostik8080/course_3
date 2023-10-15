@@ -25,12 +25,16 @@ def checking_the_dictionary(value):
     """
     executed = []
     count = 0
-    for i in value[::-1]:
+    for item in value[::-1]:
         if count == 5:
             break
-        if "EXECUTED" in i.values() \
-                and "from" in i.keys() or "to" in i.keys():
-            executed.append(i)
+        if "EXECUTED" in item.values() \
+                and "from" in item.keys():
+            executed.append(item)
+            count += 1
+        elif "EXECUTED" in item.values() \
+                and "to" in item.keys():
+            executed.append(item)
             count += 1
     return executed
 
