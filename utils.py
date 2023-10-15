@@ -1,6 +1,5 @@
 import json
-import pprint
-from datetime import date
+
 
 
 def display_last_operations():
@@ -37,6 +36,3 @@ def checking_the_dictionary(value):
             executed.append(item)
             count += 1
     return executed
-
-
-
