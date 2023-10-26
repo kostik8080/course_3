@@ -1,5 +1,6 @@
-from utils.utils import display_last_operations, checking_the_dictionary
+from src.utils import display_last_operations, checking_the_dictionary
 from datetime import datetime
+
 
 def main():
     display_last = display_last_operations()

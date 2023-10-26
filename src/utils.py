@@ -1,14 +1,15 @@
 import json
+import os
+
+JSONFILE = os.path.join("operations.json")
 
 
-
-
-def display_last_operations():
+def display_last_operations(file):
     """
     Считывает данные из файла
     """
     # Чтение данных из файла операций
-    with open('operations.json', 'r', encoding='utf-8') as file:
+    with open(file, 'r', encoding='utf-8') as file:
         data = json.load(file)
         data_dict = []
         for list_data in data:
@@ -16,7 +17,7 @@ def display_last_operations():
         return data_dict
 
 
-display_last = display_last_operations()
+display_last = display_last_operations(JSONFILE)
 
 
 def checking_the_dictionary(value):
@@ -37,3 +38,6 @@ def checking_the_dictionary(value):
             executed.append(item)
             count += 1
     return executed
+
+
+
