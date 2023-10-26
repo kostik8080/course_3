@@ -1,7 +1,7 @@
-from utils import display_last_operations, checking_the_dictionary
+from utils.utils import display_last_operations, checking_the_dictionary
 from datetime import datetime
 
-if __name__ == '__main__':
+def main():
     display_last = display_last_operations()
     checking_dictonary = checking_the_dictionary(display_last)
     revers = reversed(checking_dictonary)
@@ -25,3 +25,6 @@ if __name__ == '__main__':
         print(display["operationAmount"]["amount"], display["operationAmount"]["currency"]["name"])
 
         print()
+
+
+main()

@@ -2,6 +2,7 @@ import json
 
 
 
+
 def display_last_operations():
     """
     Считывает данные из файла
