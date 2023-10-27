@@ -1,7 +1,7 @@
 import json
 import os
 
-JSONFILE = os.path.join("operations.json")
+JSONFILE = "operations.json"
 
 
 def display_last_operations(file):
@@ -9,7 +9,8 @@ def display_last_operations(file):
     Считывает данные из файла
     """
     # Чтение данных из файла операций
-    with open(file, 'r', encoding='utf-8') as file:
+    file_path = os.path.join(os.path.dirname(__file__), file)
+    with open(file_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
         data_dict = []
         for list_data in data:

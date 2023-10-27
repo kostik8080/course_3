@@ -4,12 +4,12 @@ from src.utils import display_last_operations, checking_the_dictionary
 import os
 
 from datetime import datetime
-FILES = r'..\tests\operations.json'
-checking = display_last_operations(FILES)
+JSONFILE = os.path.join("operations.json")
+checking = display_last_operations(JSONFILE)
 
 
 def test_display_last_operations():
-    with open(FILES, 'r', encoding='utf-8') as file:
+    with open(os.path.join(os.path.dirname(__file__), 'operations.json'), 'r', encoding='utf-8') as file:
         data = json.load(file)
         data_dict = []
         for list_data in data:
