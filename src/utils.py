@@ -1,44 +1,44 @@
 import json
-import os
-
-JSONFILE = "operations.json"
 
 
-def display_last_operations(file):
-    """
-    Считывает данные из файла
-    """
-    # Чтение данных из файла операций
-    file_path = os.path.join(os.path.dirname(__file__), file)
-    with open(file_path, 'r', encoding='utf-8') as file:
+def get_operations():
+    """ Получает данные из файла operations.json"""
+    with open("operations.json", "r", encoding='utf-8') as file:
         data = json.load(file)
-        data_dict = []
-        for list_data in data:
-            data_dict.append(list_data)
-        return data_dict
+        return data
 
 
-display_last = display_last_operations(JSONFILE)
+def remove_empty_items(data):
+    """ Удаление пустых элементов из списка"""
+    return [d for d in data if "date" in d]
 
 
-def checking_the_dictionary(value):
-    """
-    Выводит последние 5 записей
-    """
-    executed = []
-    count = 0
-    for item in value[::-1]:
-        if count == 5:
-            break
-        if "EXECUTED" in item.values() \
-                and "from" in item.keys():
-            executed.append(item)
-            count += 1
-        elif "EXECUTED" in item.values() \
-                and "to" in item.keys():
-            executed.append(item)
-            count += 1
-    return executed
+def sort_key(e):
+    """ Ключ для сортировки файла по дате"""
+    return e["date"]
 
 
+def sort_datas(data):
+    """ Сортировка данных по дате от большей к меньшей"""
+    data.sort(reverse=True, key=sort_key)
+    return data
 
+
+def filter_executed(data):
+    """Фильтрация данных по статусу EXECUTED"""
+    return [d for d in data if d['state'] == "EXECUTED"]
+
+
+def get_first_number_last(data, number_last):
+    """Возврат первых number_last значений для отображения"""
+    return data[:number_last]
+
+
+def get_result_data(number_last):
+    """Подготовка data для вывода"""
+    get_data = get_operations()
+    remove_data = remove_empty_items(get_data)
+    sort_data = sort_datas(remove_data)
+    executed_data = filter_executed(sort_data)
+    result_data = get_first_number_last(executed_data, number_last)
+    return result_data
